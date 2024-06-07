@@ -157,32 +157,39 @@ return [
 
     'providers' => ServiceProvider::defaultProviders()->merge([
         /*
-         * Package Service Providers...
-         */
+        * Package Service Providers...
+        */
 
         /*
-         * Application Service Providers...
-         */
+        * Application Service Providers...
+        */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-    ])->toArray(),
+        Spatie\Permission\PermissionServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
-    /*
-    |--------------------------------------------------------------------------
-    | Class Aliases
-    |--------------------------------------------------------------------------
-    |
-    | This array of class aliases will be registered when this application
-    | is started. However, feel free to register as many as you wish as
-    | the aliases are "lazy" loaded so they don't hinder performance.
-    |
-    */
 
-    'aliases' => Facade::defaultAliases()->merge([
-        // 'Example' => App\Facades\Example::class,
-    ])->toArray(),
+        ])->toArray(),
 
-];
+        /*
+        |--------------------------------------------------------------------------
+        | Class Aliases
+        |--------------------------------------------------------------------------
+        |
+        | This array of class aliases will be registered when this application
+        | is started. However, feel free to register as many as you wish as
+        | the aliases are "lazy" loaded so they don't hinder performance.
+        |
+        */
+
+        'aliases' => Facade::defaultAliases()->merge([
+            // 'Example' => App\Facades\Example::class,
+            'Permission' => Spatie\Permission\Models\Permission::class,
+            'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+
+            ])->toArray(),
+
+        ];
